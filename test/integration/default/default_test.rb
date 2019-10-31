@@ -22,3 +22,8 @@ end
 describe package "python" do
   it { should be_installed }
 end
+
+describe pip('requests') do
+  it { should be_installed}
+    its('version') { should eq '2.3.0' }
+end
