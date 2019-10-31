@@ -20,6 +20,12 @@ describe 'python::default' do
     expect(chef_run).to update_apt_update 'update_sources'
     end
 
+    # it 'Should install requests from pip' do
+    #   expect(chef_run).to install_python 'requests'
+    # end
+
+
+
     it 'should install python-pip' do
       expect(chef_run).to install_package 'python-pip'
     end
@@ -31,6 +37,10 @@ describe 'python::default' do
 
     it 'converges successfully' do
       expect { chef_run }.to_not raise_error
+    end
+
+    it 'should install requests plugin using pip management' do
+      expect(chef_run).to run_execute ('install requests==2.3.0')
     end
   end
 end
